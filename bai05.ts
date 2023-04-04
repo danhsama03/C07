@@ -1,56 +1,28 @@
 import { question } from "readline-sync";
-/**
- * Ham nhap cac phan tu theo so luong
- * @param len So luong phan tu 
- * @returns Tra ve mang
- */
-function nhapMang(len: number): number[] {
-	let arr: number[] = [];
-	for (let i = 0; i < len; i++) {
-        arr[i] = Number(question(`Nhap phan tu vi tri ${i}: `));
-    };
-	return arr;
-};
 
-/**
- * Ham kiem tra la so nguyen to
- * @param x Phan tu trong mang
- * @returns Tra ve true hoac false
- */
-function laSNT(x: number): boolean {
-    let dem: number = 0;
-    for (let i = 1; i <= x; i++) {
-        if (x % i == 0) {
-            dem++;
-        };
-    };
-
-    if (dem == 2) {
+function hopLe(person: any) {
+    if (person.address.city == "Ho Chi Minh")
         return true;
-    } else {
-        return false;
-    };   
-};
+    return false;
+}
 
-/**
- * Ham liet ke so nguyen to
- * @param arr Mang
- */
-function lietKeSNT(arr: number[]): void {
-    for (let i = 0; i < arr.length; i++) {
-        if (laSNT(arr[i]) == true) {
-            console.log(arr[i]);
-        };
-    };
-};
-
-/**
- * Ham chuc nang nhap so luong phan tu, goi ham nhap mang, ham liet ke SNT
- */
 function main(): void {
-    let n: number = Number(question("Nhap so luong phan tu: "));
-    let a: number[] = nhapMang(n);
-    lietKeSNT(a);
+    const person = {
+        name: 'Kmin',
+        yearOfBirth: 2016,
+        address: {
+            houseNumber: 231,
+            street: 'Le Hong Phong',
+            ward: 4,
+            distric: 5,
+            city: "Ho Chi Minh"
+        }
+        
+    };
+    if (hopLe(person) == true)
+        console.log('person hop le');
+    else
+        console.log('person khong hop le');
 };
 
 main();
